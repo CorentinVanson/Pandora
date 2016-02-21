@@ -1,37 +1,50 @@
 [
   {
+    "name" : "Chat",
+    "class" : "Mammifère",
+    "order" : "Carnivore",
+    "family" : "Félins",
+    "species" : "Felis silvestris",
+    "url_img" : "./public/images/animals/chat.jpg"
+  },
+  {
     "name" : "Panda géant",
     "class" : "Mammifère",
-    "Order" : "Carnivore",
-    "Family" : "Ours",
-    "Species" : "Ailuropoda melanoleuca"
+    "order" : "Carnivore",
+    "family" : "Ours",
+    "species" : "Ailuropoda melanoleuca",
+    "url_img" : "./public/images/animals/panda_geant.JPG"
   },
   {
     "name" : "Panda roux",
     "class" : "Mammifère",
-    "Order" : "Carnivore",
-    "Family" : "Ailuridés",
-    "Species" : "Ailurus fulgens"
+    "order" : "Carnivore",
+    "family" : "Ailuridés",
+    "species" : "Ailurus fulgens",
+    "url_img" : "./public/images/animals/panda_roux.jpg"
   },
   {
     "name" : "Quokka",
     "class" : "Mammifère",
-    "Order" : "Diprotodonte",
-    "Family" : "Macropodidés",
-    "Species" : "Setonix brachyurus"
+    "order" : "Diprotodonte",
+    "family" : "Macropodidés",
+    "species" : "Setonix brachyurus",
+    "url_img" : "./public/images/animals/quokka.jpg"
   },
   {
     "name" : "Castor",
     "class" : "Mammifère",
-    "Order" : "Rongeur",
-    "Family" : "Castoridés",
-    "Species" : "Castor canadensis"
+    "order" : "Rongeur",
+    "family" : "Castoridés",
+    "species" : "Castor canadensis",
+    "url_img" : "./public/images/animals/castor.jpg"
   },
   {
     "name" : "Marmotte",
     "class" : "Mammifère",
-    "Order" : "Rongeur",
-    "Family" : "Sciuridés",
-    "Species" : "Marmota monax"
+    "order" : "Rongeur",
+    "family" : "Sciuridés",
+    "species" : "Marmota monax",
+    "url_img" : "./public/images/animals/marmotte.jpg"
   }
 ]

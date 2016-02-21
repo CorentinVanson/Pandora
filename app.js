@@ -23,6 +23,7 @@ var db = monk(connection_string);
 
 var routes = require('./routes/index');
 var about = require('./routes/about');
+var imgs = require('./routes/images');
 var getRandomMap = require('./routes/map/getRandomMap');
 
 var app = express();
@@ -48,6 +49,7 @@ app.use(function(req,res,next){
 
 app.use('/', routes);
 app.use('/about', about);
+app.use('/public/images', imgs);
 app.use('/map/getRandomMap', getRandomMap);
 
 // catch 404 and forward to error handler
