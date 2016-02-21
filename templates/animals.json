@@ -1,0 +1,37 @@
+[
+  {
+    "name" : "Panda géant",
+    "class" : "Mammifère",
+    "Order" : "Carnivore",
+    "Family" : "Ours",
+    "Species" : "Ailuropoda melanoleuca"
+  },
+  {
+    "name" : "Panda roux",
+    "class" : "Mammifère",
+    "Order" : "Carnivore",
+    "Family" : "Ailuridés",
+    "Species" : "Ailurus fulgens"
+  },
+  {
+    "name" : "Quokka",
+    "class" : "Mammifère",
+    "Order" : "Diprotodonte",
+    "Family" : "Macropodidés",
+    "Species" : "Setonix brachyurus"
+  },
+  {
+    "name" : "Castor",
+    "class" : "Mammifère",
+    "Order" : "Rongeur",
+    "Family" : "Castoridés",
+    "Species" : "Castor canadensis"
+  },
+  {
+    "name" : "Marmotte",
+    "class" : "Mammifère",
+    "Order" : "Rongeur",
+    "Family" : "Sciuridés",
+    "Species" : "Marmota monax"
+  }
+]
