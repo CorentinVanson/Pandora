@@ -1,8 +1,8 @@
 
 function init() {
 
-	var url = "http://localhost:3000";
-	//var url = "http://nodejs-pandorazoo.rhcloud.com";
+	var url = "http://localhost:8080";
+	//var url = "http://beta-pandorazoo.rhcloud.com";
 
 	var size = 50;
 
