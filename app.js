@@ -10,7 +10,7 @@ var monk = require('monk');
 var db = monk('localhost:27017/animaldb');
 
 var routes = require('./routes/index');
-var users = require('./routes/about');
+var about = require('./routes/about');
 var getRandomMap = require('./routes/map/getRandomMap');
 
 var app = express();
@@ -35,7 +35,7 @@ app.use(function(req,res,next){
 });
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/about', about);
 app.use('/map/getRandomMap', getRandomMap);
 
 // catch 404 and forward to error handler
