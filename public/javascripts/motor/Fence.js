@@ -1,4 +1,4 @@
-function Road(type) {
+function Fence(type) {
 	this.type = type;
 
 	this.getType = function(){

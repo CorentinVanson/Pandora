@@ -51,7 +51,32 @@ function Drawer(map){
             }
             this.map.canvasHover.hoverBuilding = bitmap;
         }
+        bitmap.yy = bitmap.y;
+        bitmap.cache(0,0,100,85);
 
+        return bitmap;
+    }
+
+    this.drawFence = function(vertical,i,j,id,hover){
+        var bitmap;
+        bitmap = new createjs.Bitmap(this.map.preload.getResult("fence_"+id.toString()+"_simple"));
+        bitmap.x = i*50 + (this.map.canvasBuilding.gridFence[vertical][i].length - j) * 50 - 50;
+        bitmap.y = j*25 + i*25 - 18;
+        if(vertical==1){
+            bitmap.x += -50;
+            this.symetryX(bitmap);
+        }
+
+        if(hover == 1){
+            bitmap.alpha = 0.5;
+            if(this.map.canvasBuilding.gridFence[vertical][i][j].getType() != 0 ){
+                bitmap.filters = [
+                    new createjs.ColorFilter(2)
+                ];
+            }
+            this.map.canvasHover.hoverBuilding = bitmap;
+        }
+        bitmap.yy = bitmap.y - 18;
         bitmap.cache(0,0,100,85);
 
         return bitmap;

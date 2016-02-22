@@ -1,14 +1,8 @@
-function Fence(type,x,y,x2,y2){
+function Fence(type){
 	this.type = type;
 	this.getType = function(){
 		return this.type;
 	}
-
-	this.vector = [[x,y],[x2,y2]];
-	this.getVector = function(){
-		return this.vector;
-	}
-
 }
 
 Fence.getNumberType = function(){
