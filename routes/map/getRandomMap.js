@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
     if ('size' in params) {
       var size = params['size'];
       var map = new Map(size,res);
-      map.initiateRandomMap();
+      map.initiateRandomMap(true);
       var matrix = {mapTile : map.getMatrixTile(),
         mapBuilding : map.getMatrixBuilding(),
         mapRoad : map.getMatrixRoad(),

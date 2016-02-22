@@ -10,8 +10,8 @@ function Canvas(map,stage, preload){
     this.stage.addChild(this.mapContainer);
 
     var sortFunction = function(obj1, obj2, options) {
-	    if (obj1.y > obj2.y) { return 1; }
-	    if (obj1.y < obj2.y) { return -1; }
+	    if (obj1.yy > obj2.yy) { return 1; }
+	    if (obj1.yy < obj2.yy) { return -1; }
 	    return 0;
 	}
 
