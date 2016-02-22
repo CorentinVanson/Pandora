@@ -1,8 +1,26 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
 }
+
+.img-gallery {
+    width: 140px;
+    height: 140px;
+}
+
+.img-selected{
+    max-height: 175px;
+}
+
+.position-right {
+    min-height: 100%;
+    padding-top: 110px;
+}
+
+
+
+
