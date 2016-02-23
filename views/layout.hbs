@@ -9,65 +9,6 @@
 
 </head>
 <body>
-    <div class="off-canvas-wrapper">
-        <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-            <div class="off-canvas position-right reveal-for-large" id="my-info" data-off-canvas data-position="right">
-                <div class="row column" ng-controller="animalSelected">
-                    <br>
-                    <img ng-if="animal()" class="thumbnail img-selected" src="// animal().url_img //">
-                    <div>
-                        <h5 ng-if="animal()">// animal().name //</h5>
-                        <h5 ng-if="!animal()"> Sélectionnez un animal</h5>
-                        <ul ng-if="animal()">
-                            <li>Classe : // animal().class //</li>
-                            <li>Ordre : // animal().order //</li>
-                            <li>Famille : // animal().family //</li>
-                            <li>Espèce : // animal().species //</li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="off-canvas-content" data-off-canvas-content>
-                <div class="title-bar hide-for-large">
-                    <div class="title-bar-left">
-                        <button class="menu-icon" type="button" data-open="my-info"></button>
-                        <span class="title-bar-title">Animal sélectionné :</span>
-                    </div>
-                </div>
-
-
-
-                <div class="callout primary">
-                    <div class="row column">
-                        <h1>Pandora</h1>
-                    </div>
-                </div>
-
-                <div class="row">
-                    {{{body}}}
-                </div>
-                <hr>
-
-
-                <div ng-controller="animalsController" class="row small-up-2 medium-up-3 large-up-4">
-                    <div class="column" ng-repeat="an in animals">
-                        <h5>// an.name //</h5>
-                        <img class="thumbnail img-gallery" src="// an.url_img //" ng-click="selectAnimal(an)">
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-
-    <script src="/javascripts/angular/pandoraApp.js"></script>
-    <script src="/javascripts/vendor/jquery.min.js"></script>
-    <script src="/javascripts/vendor/what-input.min.js"></script>
-    <script src="/javascripts/foundation.min.js"></script>
-    <script src="/javascripts/app.js"></script>
+{{{body}}}
 </body>
 </html>

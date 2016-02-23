@@ -7,6 +7,7 @@ var Building = require('./../motor/Building');
 var Tile = require('./../motor/Tile');
 var Road = require('./../motor/Road');
 var Fence = require('./../motor/Fence');
+var Animal = require('./../motor/Animal');
 
 var router = express.Router();
 
@@ -27,9 +28,11 @@ router.get('/', function(req, res, next) {
         mapBuilding : map.getMatrixBuilding(),
         mapRoad : map.getMatrixRoad(),
         mapFence : map.getMatrixFence(),
+        animal : map.getAnimals(),
         numberTile : Tile.getNumberType(),
         numberRoad : Road.getNumberType(),
         numberBuilding : Building.getNumberType(),
+        numberAnimal : Animal.getNumberType(),
         numberFence : Fence.getNumberType()};
       res.send(JSON.stringify(matrix));
     }else{

@@ -168,6 +168,28 @@ function Drawer(map){
         return bitmap;
     }
 
+    this.drawAnimal = function(i,j,id,hover){
+        console.log("test");
+        var bitmap;
+        bitmap = new createjs.Bitmap(this.map.preload.getResult("animal_"+id.toString()+"_simple"));
+        bitmap.x = i*50 + (this.map.canvasBuilding.grid.length - j) * 50 - 50;
+        bitmap.y = j*25 + i*25 - 18;
+
+        if(hover == 1){
+            bitmap.alpha = 0.5;
+            if(this.map.canvasBuilding.gridFence[vertical][i][j].getType() != 0 ){
+                bitmap.filters = [
+                    new createjs.ColorFilter(2)
+                ];
+            }
+            this.map.canvasHover.hoverBuilding = bitmap;
+        }
+        bitmap.yy = bitmap.y - 18;
+        bitmap.cache(0,0,100,85);
+
+        return bitmap;
+    }
+
     this.symetryX = function(bitmap){
         bitmap.scaleX = -1;
         bitmap.x += 100;

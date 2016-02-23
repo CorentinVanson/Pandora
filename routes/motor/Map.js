@@ -4,6 +4,7 @@ var Map = function (size,res) {
 	var Tile = require('./Tile');
 	var Road = require('./Road');
 	var Fence = require('./Fence');
+	var Animal = require('./Animal');
 
 	this.size = parseInt(size);
 	this.res = res;
@@ -12,6 +13,7 @@ var Map = function (size,res) {
     this.gridRoad = new Array(this.size);
     this.gridBuilding = new Array(this.size);
 	this.gridFence = new Array(2);
+	this.animal = new Array();
 	//horizontaux
 	this.gridFence[0] = new Array(this.size + 1);
 	//verticaux
@@ -130,7 +132,19 @@ var Map = function (size,res) {
 				this.gridFence[1][i+10][Math.floor(this.size / 2 + 2)] = new Fence(1);
 				this.gridFence[1][i+10][Math.floor(this.size / 2 - 11)] = new Fence(1);
 				this.gridFence[1][i+10][Math.floor(this.size / 2 + 12)] = new Fence(1);
+				this.gridFence[0][30][Math.floor(this.size / 2 + 2) + i] = new Fence(1);
+				this.gridFence[0][30][Math.floor(this.size / 2 - 2) - i] = new Fence(1);
+				this.gridFence[1][i+20][Math.floor(this.size / 2 - 1)] = new Fence(1);
+				this.gridFence[1][i+20][Math.floor(this.size / 2 + 2)] = new Fence(1);
+				this.gridFence[1][i+20][Math.floor(this.size / 2 - 11)] = new Fence(1);
+				this.gridFence[1][i+20][Math.floor(this.size / 2 + 12)] = new Fence(1);
 			}
+			this.animal.push(new Animal(1,5,20));
+			this.animal.push(new Animal(2,5,32));
+			this.animal.push(new Animal(3,15,20));
+			this.animal.push(new Animal(4,15,32));
+			this.animal.push(new Animal(5,25,20));
+			this.animal.push(new Animal(6,25,32));
 
 		}else{
 
@@ -202,6 +216,14 @@ var Map = function (size,res) {
 					}
 				}
 			}
+		}
+		return matrix;
+	}
+
+	this.getAnimals = function(){
+		var matrix = new Array();
+		for (var i = 0; i<this.animal.length; i++){
+			matrix.push({type:this.animal[i].getType(),i:this.animal[i].getI(),j:this.animal[i].getJ()})
 		}
 		return matrix;
 	}

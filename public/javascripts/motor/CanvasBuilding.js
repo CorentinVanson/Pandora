@@ -1,7 +1,8 @@
-function CanvasBuilding(map,stage, preload, grid, gridFence){
+function CanvasBuilding(map,stage, preload, grid, gridFence,animal){
 	Canvas.call(this,map,stage,preload);
     this.grid = grid;
     this.gridFence = gridFence;
+    this.animal = animal;
 
     this.drawMap = function(){
         for(var i = 0; i<this.grid.length + 1; i++){
@@ -26,6 +27,9 @@ function CanvasBuilding(map,stage, preload, grid, gridFence){
                     }
                 }
             }
+        }
+        for(var i = 0; i<animal.length; i++){
+            this.showAnimal(animal[i].getI(),animal[i].getJ(),animal[i].getType(),0)
         }
         this.stage.x = -(this.grid[0].length*50)/2 + 5*50;
         this.stage.y = -(this.grid[0].length*25)/2 + 6*25;
@@ -53,6 +57,25 @@ function CanvasBuilding(map,stage, preload, grid, gridFence){
     this.addFence = function(vertical,i,j,id){
         this.map.gridFence[vertical][i][j] = new Fence(id);
         this.showFence(vertical,i,j,id,0);
+        this.stage.update();
+    }
+
+
+
+    this.showAnimal = function(i,j,id,hover){
+        var bitmap = this.map.drawer.drawAnimal(i,j,id,hover);
+        var s = this.map.$scope;
+        var get = function(){
+            s.setAnimalById(id);
+        };
+        bitmap.on("click",get);
+        this.mapContainer.addChild(bitmap);
+        this.sortout();
+    }
+
+    this.addAnimal = function(vertical,i,j,id){
+        this.map.animal.push(new Animal(id,i,j));
+        this.showAnimal(i,j,id,0);
         this.stage.update();
     }
 }

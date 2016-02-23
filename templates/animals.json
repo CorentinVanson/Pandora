@@ -1,5 +1,6 @@
 [
   {
+    "id" : 1,
     "name" : "Chat",
     "class" : "Mammifère",
     "order" : "Carnivore",
@@ -8,6 +9,7 @@
     "url_img" : "./public/images/animals/chat.jpg"
   },
   {
+    "id" :2,
     "name" : "Panda géant",
     "class" : "Mammifère",
     "order" : "Carnivore",
@@ -16,6 +18,7 @@
     "url_img" : "./public/images/animals/panda_geant.JPG"
   },
   {
+    "id" : 3,
     "name" : "Panda roux",
     "class" : "Mammifère",
     "order" : "Carnivore",
@@ -24,6 +27,7 @@
     "url_img" : "./public/images/animals/panda_roux.jpg"
   },
   {
+    "id" : 4,
     "name" : "Quokka",
     "class" : "Mammifère",
     "order" : "Diprotodonte",
@@ -32,6 +36,7 @@
     "url_img" : "./public/images/animals/quokka.jpg"
   },
   {
+    "id" : 5,
     "name" : "Castor",
     "class" : "Mammifère",
     "order" : "Rongeur",
@@ -40,6 +45,7 @@
     "url_img" : "./public/images/animals/castor.jpg"
   },
   {
+    "id" : 6,
     "name" : "Marmotte",
     "class" : "Mammifère",
     "order" : "Rongeur",

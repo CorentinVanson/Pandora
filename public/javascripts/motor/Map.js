@@ -1,5 +1,6 @@
-function Map(preload,data,stage,stageTile,stageRoad,stageBuilding,stageMenu,stageHover) {
-	
+function Map($scope,preload,data,stage,stageTile,stageRoad,stageBuilding,stageMenu,stageHover) {
+
+	this.$scope = $scope;
 	this.drawer = new Drawer(this);
 	this.stage = stage;
 	this.stageTile = stageTile;
@@ -26,6 +27,7 @@ function Map(preload,data,stage,stageTile,stageRoad,stageBuilding,stageMenu,stag
     this.gridBuilding = new Array(this.size);
 	this.gridRoad = new Array(this.size);
 	this.gridFence = new Array(2);
+	this.animal = new Array();
 	//horizontaux
 	this.gridFence[0] = new Array(this.size + 1);
 	//verticaux
@@ -53,11 +55,14 @@ function Map(preload,data,stage,stageTile,stageRoad,stageBuilding,stageMenu,stag
 			}
 		}
 	}
-	console.log(this.gridFence);
+
+	for (var i = 0; i<data.animal.length; i++){
+		this.animal.push(new Animal(data.animal[i].type,data.animal[i].i,data.animal[i].j));
+	}
 
     this.canvasTile = new CanvasTile(this,this.stageTile, this.preload, this.gridTile);
     this.canvasRoad = new CanvasRoad(this,this.stageRoad, this.preload, this.gridRoad);
-    this.canvasBuilding = new CanvasBuilding(this,this.stageBuilding, this.preload, this.gridBuilding,this.gridFence);
+    this.canvasBuilding = new CanvasBuilding(this,this.stageBuilding, this.preload, this.gridBuilding,this.gridFence,this.animal);
     this.canvasHover = new CanvasHover(this,this.stageHover, this.preload);
 
 	this.drawGame = function(){

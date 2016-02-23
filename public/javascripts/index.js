@@ -38,6 +38,10 @@ function init() {
 			preload.loadFile(new createjs.LoadItem().set({src:'images/Tiles/'+i.toString()+'.png', id:'tile_'+i.toString()}));
 		}
 
+		for(var i = 1; i<data.numberAnimal; i++){
+			preload.loadFile(new createjs.LoadItem().set({src:'images/Animal/'+i.toString()+'/simple.png', id:'animal_'+i.toString()+'_simple'}));
+		}
+
 		for(var i = 1; i<data.numberRoad; i++){
 			preload.loadFile(new createjs.LoadItem().set({src:'images/Roads/'+i.toString()+'/simple.png', id:'road_'+i.toString()+'_simple'}));
 			preload.loadFile(new createjs.LoadItem().set({src:'images/Roads/'+i.toString()+'/two.png', id:'road_'+i.toString()+'_two'}));
