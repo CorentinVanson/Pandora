@@ -17,15 +17,17 @@ app.filter('getById', function() {
     }
 });
 
-app.factory('chooseAnimal', function() {
+app.factory('chooseAnimal', function($timeout) {
     var animal = null;
     var animalService = {};
     var scopeAct = null;
 
     animalService.set = function (an) {
         console.log("ok");
-        animal = an;
-        scopeAct();
+        $timeout(function(){
+            animal = an;
+            scopeAct(an);
+        },0);
     };
 
     animalService.get = function () {
@@ -74,8 +76,8 @@ app.controller("animalsController", function ($scope, $http, $filter, chooseAnim
 
 app.controller("animalSelected", function ($scope, chooseAnimal) {
     $scope.animal = chooseAnimal.get();
-    $scope.act = function(){
-        $scope.animal = chooseAnimal.get();
+    $scope.act = function(an){
+        $scope.animal = an;
         $scope.$apply();
     }
     chooseAnimal.init($scope.act);
