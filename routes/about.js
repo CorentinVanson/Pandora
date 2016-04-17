@@ -64,6 +64,38 @@ var updateAnimalInDB = function (an, col) {
 
 };
 
+router.get('/init', function(req, res) {
+  console.log("toto");
+  var client = new req.sparqler.Client();
+  var q = new req.sparqler.Query({"limit": 2000});
+  var animal = {
+    "type": "dbo:Animal",
+    "dbp:name": "?name",
+    "dbo:class": "?class",
+    "dbo:order": "?order",
+    "dbo:family": "?family",
+    "dbo:species": "?species",
+    "dbo:thumbnail": "?image",
+    "dbo:wikiPageID": "?id"
+  };
+
+  var col = req.db.get('animal');
+  col.remove({});
+
+  q.registerVariable("animal", animal);
+  //console.log(q.sparqlQuery);
+
+  client.send(q, function(error, data) {
+    var result = data.results.bindings;
+    //console.log(result);
+    var r = formatResults(result);
+    for (var i =0; i < r.length; i++){
+      updateAnimalInDB(r[i], col);
+    }
+    res.send("Database is reset.");
+  });
+});
+
 router.get('/', function(req, res) {
   var collection = req.db.get('animal');
   collection.find({}, function(err, doc){
@@ -110,40 +142,6 @@ router.get('/:id', function (req, res) {
       });
     }
 
-  });
-
-});
-
-router.get('/init', function(req, res) {
-  var client = new req.sparqler.Client();
-  var q = new req.sparqler.Query({
-    "limit": 2000
-  });
-  var animal = {
-    "type": "dbo:Animal",
-    "dbp:name": "?name",
-    "dbo:class": "?class",
-    "dbo:order": "?order",
-    "dbo:family": "?family",
-    "dbo:species": "?species",
-    "dbo:thumbnail": "?image",
-    "dbo:wikiPageID": "?id"
-  };
-
-  var col = req.db.get('animal');
-  col.remove({});
-
-  q.registerVariable("animal", animal);
-  //console.log(q.sparqlQuery);
-
-  client.send(q, function(error, data){
-    var result = data.results.bindings;
-    //console.log(result);
-    var r = formatResults(result);
-    for (var i =0; i < r.length; i++){
-      updateAnimalInDB(r[i], col);
-    }
-    res.send("Database is reset.");
   });
 
 });
