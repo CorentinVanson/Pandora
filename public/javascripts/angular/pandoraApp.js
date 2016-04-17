@@ -61,7 +61,7 @@ app.factory('animals', function($filter) {
 });
 
 app.controller("animalsController", function ($scope, $http, $filter, chooseAnimal, animals) {
-    var url = "http://localhost:8080/about";
+    var url = "http://127.0.0.1:8080/about";
 
     $scope.animals = animals.get;
 
@@ -89,7 +89,7 @@ app.controller("game",function($scope, $http, chooseAnimal, animals){
         chooseAnimal.set(animals.getAnimalById(id));
     }
 
-    var url = "http://localhost:8080";
+    var url = "http://127.0.0.1:8080";
     //var url = "http://beta-pandorazoo.rhcloud.com";
 
     var size = 50;

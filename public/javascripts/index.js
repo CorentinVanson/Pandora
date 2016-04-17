@@ -1,7 +1,7 @@
 
 function init() {
 
-	var url = "http://localhost:8080";
+	var url = "http://127.0.0.1:8080";
 	//var url = "http://beta-pandorazoo.rhcloud.com";
 
 	var size = 50;
