@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var sparqler = require('sparqling-star');
 
 var mongo = require('mongodb');
 var monk = require('monk');
@@ -44,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Make our db accessible to our router
 app.use(function(req,res,next){
   req.db = db;
+  req.sparqler = sparqler;
   next();
 });
 
