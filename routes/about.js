@@ -18,6 +18,7 @@ var formatResults = function (res) {
     animal.family = formatter(res[0].family.value);
     animal.order = formatter(res[0].order.value);
     animal.species = formatter(res[0].species.value);
+    animal.description = res[0].abs.value;
     animal.lastUpdate = ts;
     if (res[0].id) {
       animal.wikiPageId = res[0].id.value;
@@ -36,6 +37,7 @@ var formatResults = function (res) {
       animal.family = formatter(res[i].family.value);
       animal.order = formatter(res[i].order.value);
       animal.species = formatter(res[i].species.value);
+      animal.description = res[i].abs.value;
       animal.wikiPageId = res[i].id.value;
       animal.lastUpdate = ts;
 
@@ -65,7 +67,6 @@ var updateAnimalInDB = function (an, col) {
 };
 
 router.get('/init', function(req, res) {
-  console.log("toto");
   var client = new req.sparqler.Client();
   var q = new req.sparqler.Query({"limit": 2000});
   var animal = {
@@ -74,6 +75,11 @@ router.get('/init', function(req, res) {
     "dbo:class": "?class",
     "dbo:order": "?order",
     "dbo:family": "?family",
+    "dbo:abstract": {
+      'value': '?abs',
+      'optional': false,
+      'filter': "lang(?abs) = 'fr'"
+    },
     "dbo:species": "?species",
     "dbo:thumbnail": "?image",
     "dbo:wikiPageID": "?id"
@@ -123,6 +129,11 @@ router.get('/:id', function (req, res) {
         "dbo:class": "?class",
         "dbo:order": "?order",
         "dbo:family": "?family",
+        "dbo:abstract": {
+          'value': '?abs',
+          'optional': false,
+          'filter': "lang(?abs) = 'fr'"
+        },
         "dbo:species": "?species",
         "dbo:thumbnail": "?image",
         "dbo:wikiPageID": animalId
@@ -131,12 +142,14 @@ router.get('/:id', function (req, res) {
 
       client.send(q, function (error, data) {
         var result = data.results.bindings;
+        console.log(result);
         var r = formatResults(result);
         r.wikiPageId = animalId;
 
         collection.remove({wikiPageId: animalId}, function (err, doc) {
           collection.insert(r, function (err, doc) {
             console.log("Animal '" + r.name + "' updated in DB.");
+            res.send(r);
           })
         });
       });
