@@ -100,11 +100,11 @@ var Map = function (size,res) {
 			var size = this.size;
 			for(var k = 0; k<this.size/2; k++){
 				this.gridRoad[k][Math.floor(this.size/2)] = new Road(1);
-				///if(k%2 == 1) {
+				if(k%2 == 1) {
 				this.gridBuilding[k][Math.floor(this.size / 2 - 1)] = new Building(1, 1);
-				this.gridBuilding[k][Math.floor(this.size / 2)] = new Building(1, 1);
+				//this.gridBuilding[k][Math.floor(this.size / 2)] = new Building(1, 1);
 				this.gridBuilding[k][Math.floor(this.size / 2 + 1)] = new Building(2, 3);
-				//}
+				}
 			}
 			for(var i = 0; i<this.size + 1; i++){
 				for (var j = 0; j<this.size; j++){
