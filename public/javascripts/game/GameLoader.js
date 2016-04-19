@@ -2,27 +2,20 @@ var GameLoader = function(game){
     this.game = game;
 
     this.load = function(data,animals){
+
         game.load.onFileComplete.add(fileComplete, this);
-        game.load.onLoadComplete.add(loadComplete, this);
 
         game.load.crossOrigin = 'anonymous';
         var numbIconMenu = 9;
         var numbButton = 3;
 
-        var total = data.numberTile + data.numberAnimal - 1 + data.numberRoad - 1 + data.numberFence - 1 + data.numberBuilding - 1 + numbIconMenu - 1 +  numbButton - 1;
+        var total = 0;
         var load = 0;
         window_load = game.add.group();
 
         function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
-
             load++;
             drawLoading();
-
-        }
-
-        function loadComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
-
-            window_load.destroy();
 
         }
 
@@ -99,7 +92,7 @@ var GameLoader = function(game){
             var style = { font: "40px Arial", fill: "#ffffff"};
             var title = game.add.text(400,260,"Loading", style);
             title.anchor.set(0.5);
-            var title = game.add.text(400,300,parseInt((load/total)*10,10)+' %', style);
+            var title = game.add.text(400,300,game.load.progress+' %', style);
             title.anchor.set(0.5);
             window_load.add(title);
         }
