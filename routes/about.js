@@ -176,8 +176,13 @@ router.get('/:id/image', function (req, res) {
   collection.findOne({wikiPageId: animalId}, function (err, doc) {
 
     request(doc.url_img, {encoding: 'binary'}, function(error, response, body) {
-      res.writeHead(200, {'Content-Type': response.headers["content-type"]|"image/jpg" });
-      res.end(body, 'binary');
+      if(res != undefined) {
+        res.writeHead(200, {'Content-Type': response.headers["content-type"] | "image/jpg"});
+        res.end(body, 'binary');
+      }else{
+        res.writeHead(200, {'Content-Type': "image/jpg"});
+        res.end('', 'binary');
+      }
     });
 
   });
