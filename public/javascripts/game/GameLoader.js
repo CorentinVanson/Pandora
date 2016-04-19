@@ -4,18 +4,23 @@ var GameLoader = function(game){
     this.load = function(data,animals){
 
         game.load.onFileComplete.add(fileComplete, this);
+        game.load.onLoadComplete.add(loadComplete, this);
 
         game.load.crossOrigin = 'anonymous';
         var numbIconMenu = 9;
         var numbButton = 3;
 
-        var total = 0;
-        var load = 0;
         window_load = game.add.group();
 
         function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
-            load++;
+
             drawLoading();
+
+        }
+
+        function loadComplete() {
+
+            window_load.destroy();
 
         }
 
