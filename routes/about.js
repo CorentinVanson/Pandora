@@ -84,7 +84,7 @@ router.get('/init', function(req, res) {
     "dbo:abstract": {
       'value': '?abs',
       'optional': false,
-      'filter': "lang(?abs) = 'fr'"
+      'filter': "lang(?abs) = 'en'"
     },
     "dbo:species": "?species",
     "dbo:thumbnail": "?image",
@@ -95,7 +95,7 @@ router.get('/init', function(req, res) {
   col.remove({});
 
   q.registerVariable("animal", animal);
-  //console.log(q.sparqlQuery);
+  console.log(q.sparqlQuery);
 
   client.send(q, function(error, data) {
     var result = data.results.bindings;
@@ -138,13 +138,14 @@ router.get('/:id', function (req, res) {
         "dbo:abstract": {
           'value': '?abs',
           'optional': false,
-          'filter': "lang(?abs) = 'fr'"
+          'filter': "lang(?abs) = 'en'"
         },
         "dbo:species": "?species",
         "dbo:thumbnail": "?image",
         "dbo:wikiPageID": animalId
       };
       q.registerVariable("animal", animal);
+      console.log(q.sparqlQuery);
 
       client.send(q, function (error, data) {
         var result = data.results.bindings;
