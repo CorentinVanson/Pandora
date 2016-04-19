@@ -1,5 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
+request = require('request');
+var url = require('url');
+var https = require('https');
+var exec = require('child_process').exec;
+var spawn = require('child_process').spawn;
 
 var formatResults = function (res) {
   var formatter = function (entry) {
@@ -154,6 +160,25 @@ router.get('/:id', function (req, res) {
         });
       });
     }
+
+  });
+
+});
+
+router.get('/:id/image', function (req, res) {
+  var animalId = req.params.id;
+  var collection = req.db.get('animal');
+
+  var currentDate = new Date();
+  currentDate.setMonth(currentDate.getMonth() - 1);
+  var monthAgoTS = currentDate.getTime();
+
+  collection.findOne({wikiPageId: animalId}, function (err, doc) {
+
+    request(doc.url_img, {encoding: 'binary'}, function(error, response, body) {
+      res.writeHead(200, {'Content-Type': response.headers["content-type"]|"image/jpg" });
+      res.end(body, 'binary');
+    });
 
   });
 

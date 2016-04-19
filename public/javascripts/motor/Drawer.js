@@ -17,7 +17,6 @@ function Drawer(map){
 
         if(hover == 1){
             tile.alpha = 0.5;
-            this.map.canvasHover.hoverTile = tile;
         }             
 
         tile.cache(-50,0,100,50);
@@ -49,7 +48,6 @@ function Drawer(map){
                     new createjs.ColorFilter(2)
                 ];
             }
-            this.map.canvasHover.hoverBuilding = bitmap;
         }
         bitmap.yy = bitmap.y;
         bitmap.cache(0,0,100,85);
@@ -74,7 +72,6 @@ function Drawer(map){
                     new createjs.ColorFilter(2)
                 ];
             }
-            this.map.canvasHover.hoverBuilding = bitmap;
         }
         bitmap.yy = bitmap.y - 18;
         bitmap.cache(0,0,100,85);
@@ -82,7 +79,7 @@ function Drawer(map){
         return bitmap;
     }
 
-    this.drawRoad = function(i,j){
+    this.drawRoad = function(i,j,id,hover){
         var neig = 0;
 
         var SE;
@@ -122,11 +119,11 @@ function Drawer(map){
 
         var bitmap;
         if(neig >= 4){
-            bitmap = new createjs.Bitmap(this.map.preload.getResult("road_"+this.map.canvasRoad.grid[i][j].getType().toString()+"_four"));
+            bitmap = new createjs.Bitmap(this.map.preload.getResult("road_"+id.toString()+"_four"));
             bitmap.x = i*50 + (this.map.canvasRoad.grid[i].length - j) * 50 - 50;
             bitmap.y = j*25 + i*25 -33;
         }else if(neig == 3){
-            bitmap = new createjs.Bitmap(this.map.preload.getResult("road_"+this.map.canvasRoad.grid[i][j].getType().toString()+"_three"));
+            bitmap = new createjs.Bitmap(this.map.preload.getResult("road_"+id.toString()+"_three"));
             bitmap.x = i*50 + (this.map.canvasRoad.grid[i].length - j) * 50 - 50;
             bitmap.y = j*25 + i*25 -33;
             if(NE && NW && SE){
@@ -139,7 +136,7 @@ function Drawer(map){
             }
         }else{
             if((NE && SW) || (NW && SE) || neig <= 1){
-                bitmap = new createjs.Bitmap(this.map.preload.getResult("road_"+this.map.canvasRoad.grid[i][j].getType().toString()+"_simple"));
+                bitmap = new createjs.Bitmap(this.map.preload.getResult("road_"+id.toString()+"_simple"));
                 bitmap.x = i*50 + (this.map.canvasRoad.grid[i].length - j) * 50 - 50;
                 bitmap.y = j*25 + i*25 -33;
                 if(NW || SE){
@@ -147,14 +144,14 @@ function Drawer(map){
                 }
             }else{
                 if((NW && SW) ||(NE && SE)){
-                    bitmap = new createjs.Bitmap(this.map.preload.getResult("road_"+this.map.canvasRoad.grid[i][j].getType().toString()+"_two"));
+                    bitmap = new createjs.Bitmap(this.map.preload.getResult("road_"+id.toString()+"_two"));
                     bitmap.x = i*50 + (this.map.canvasRoad.grid[i].length - j) * 50 - 50;
                     bitmap.y = j*25 + i*25 -33;
                     if(NW && SW){
                         this.symetryX(bitmap);
                     }
                 }else{
-                    bitmap = new createjs.Bitmap(this.map.preload.getResult("road_"+this.map.canvasRoad.grid[i][j].getType().toString()+"_twotwo"));
+                    bitmap = new createjs.Bitmap(this.map.preload.getResult("road_"+id.toString()+"_twotwo"));
                     bitmap.x = i*50 + (this.map.canvasRoad.grid[i].length - j) * 50 - 50;
                     bitmap.y = j*25 + i*25 -33;
                     if(NE && NW){
@@ -164,6 +161,14 @@ function Drawer(map){
             }
         }
         bitmap.zIndex = i+j;
+        if(hover == 1){
+            bitmap.alpha = 0.5;
+            if(this.map.canvasRoad.grid[i][j].getType() != 0 ){
+                bitmap.filters = [
+                    new createjs.ColorFilter(2)
+                ];
+            }
+        }
         bitmap.cache(0,0,100,85);
         return bitmap;
     }

@@ -248,7 +248,7 @@ function Menu(map, stage, preload, data){
 			croad.addChild(bitmap);
 			croad.on("click",function(event){
 				event.preventDefault();
-				scope.map.putBuilding(event.target.parent.id);
+				scope.map.canvasHover.putBuilding(event.target.parent.id);
 			});
 			croad.on("mouseover",handleMouseOver);
 			croad.on("mouseout",handleMouseOut);
@@ -279,6 +279,7 @@ function Menu(map, stage, preload, data){
 				cont.x = -100;
 			}
 			var croad = new createjs.Container();
+			croad.id = i;
 
 			var road = new createjs.Shape();
 			road.graphics.beginFill("#000000").drawCircle(0, 0, 20);
@@ -299,6 +300,10 @@ function Menu(map, stage, preload, data){
 			bitmap.scaleY = 0.3;
 
 			croad.addChild(bitmap);
+			croad.on("click",function(event){
+				event.preventDefault();
+				scope.map.canvasHover.putRoad(event.target.parent.id);
+			});
 			cont.addChild(croad);
 		}
 		if(this.data.numberRoad>1){

@@ -6,7 +6,7 @@ function CanvasRoad(map,stage, preload, grid){
         for(var i = 0; i<this.grid.length; i++){
             for(var j = 0; j<this.grid[i].length; j++){
                 if(this.grid[i][j].getType() != 0){
-                    var bitmap = this.map.drawer.drawRoad(i,j);
+                    var bitmap = this.map.drawer.drawRoad(i,j,this.grid[i][j].getType(),0);
                     this.mapContainer.addChild(bitmap);
                 }
             }

@@ -24,16 +24,22 @@ function CanvasTile(map,stage, preload, grid){
     }
 
     this.tilemouseover = function(evt){
-        scope.map.iHoverBuilding = evt.target.i;
-        scope.map.jHoverBuilding = evt.target.j;
-        scope.map.canvasHover.showHoverBuilding();
+        if(scope.map.canvasHover.state != 0) {
+            scope.map.canvasHover.iHover = evt.target.i;
+            scope.map.canvasHover.jHover = evt.target.j;
+            scope.map.canvasHover.showHoverBuilding();
+        }
     }
 
     this.tilemouseout = function(evt){
-        scope.map.canvasHover.hideHoverBuilding();
+        if(scope.map.canvasHover.state != 0) {
+            scope.map.canvasHover.hideHoverBuilding();
+        }
     }
 
     this.tileclick = function(evt){
-        scope.map.canvasHover.clickHoverBuilding(evt);
+        if(scope.map.canvasHover.state != 0) {
+            scope.map.canvasHover.clickHoverBuilding(evt);
+        }
     }
 }

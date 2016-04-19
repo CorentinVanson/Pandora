@@ -9,14 +9,7 @@ function Map($scope,preload,data,stage,stageTile,stageRoad,stageBuilding,stageMe
 	this.stageMenu = stageMenu;
 	this.stageHover = stageHover;
 
-	//state of game
-	//0 ->init
-	//1 ->placing Building
-	this.state = 0;
 
-	this.orientationBuilding = 0;
-	this.iHoverBuilding = 0;
-	this.jHoverBuilding = 0;
 
 	this.preload = preload;
 	this.size = data.mapTile.length;
@@ -75,11 +68,6 @@ function Map($scope,preload,data,stage,stageTile,stageRoad,stageBuilding,stageMe
 		this.canvasTile.drawMap();
 		this.canvasRoad.drawMap();
 		this.canvasBuilding.drawMap();
-	}
-
-	this.putBuilding = function(id){
-		this.state = 1;
-		this.idToPut = id;
 	}
 
 	var scope = this;

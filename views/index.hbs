@@ -1,7 +1,7 @@
 <!--Online script-->
-<script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+<!--<script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
 <script src="https://code.createjs.com/tweenjs-0.6.2.min.js"></script>
-<script src="https://code.createjs.com/preloadjs-0.6.2.min.js"></script>
+<script src="https://code.createjs.com/preloadjs-0.6.2.min.js"></script>-->
 
 <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
@@ -34,37 +34,37 @@
 
 
 
-            <div class="callout primary">
+            <div class="callout success">
                 <div class="row column">
-                    <h1>Pandora</h1>
+                    <h1><strong>Pandora</strong></h1>
                 </div>
             </div>
-
-            <div class="row">
-                <div style="position:relative;width:1000px;height:600px;" id="PandoraContainer" ng-controller="game">
-                    <canvas style="position:absolute;top:0px;width:100%;height:100%;" id="PandoraTile" height="600"
-                            width="1000"></canvas>
-                    <canvas style="position:absolute;top:0px;width:100%;height:100%;" id="PandoraRoad" height="600"
-                            width="1000"></canvas>
-                    <canvas style="position:absolute;top:0px;width:100%;height:100%;" id="PandoraBuilding" height="600"
-                            width="1000"></canvas>
-                    <canvas style="position:relative; width:100%; height:100%;" id="Pandora" height="600" width="1000"></canvas>
-                    <canvas style="position:absolute;top:0px;width:100%;height:100%;" id="PandoraHover" height="600"
-                            width="1000"></canvas>
-                    <canvas style="position:absolute;top:0px;width:100%;height:100%;" id="PandoraMenu" height="600"
-                            width="1000"></canvas>
-                </div>
+            <div  ng-controller="game">
+            <div class="row" style="border-left: 1px solid black; border-right: 1px solid black;" id="game">
+                <!--<div style="position:relative;width:1000px;height:600px;margin-right:auto;margin-left:auto;" id="PandoraContainer" ng-controller="game" >
+                        <canvas style="position:absolute;top:0px;width:100%;height:100%;" id="PandoraTile" height="600"
+                                width="1000"></canvas>
+                        <canvas style="position:absolute;top:0px;width:100%;height:100%;" id="PandoraRoad" height="600"
+                                width="1000"></canvas>
+                        <canvas style="position:absolute;top:0px;width:100%;height:100%;" id="PandoraBuilding" height="600"
+                                width="1000"></canvas>
+                        <canvas style="position:relative; width:100%; height:100%;" id="Pandora" height="600" width="1000"></canvas>
+                        <canvas style="position:absolute;top:0px;width:100%;height:100%;" id="PandoraHover" height="600"
+                                width="1000"></canvas>
+                        <canvas style="position:absolute;top:0px;width:100%;height:100%;" id="PandoraMenu" height="600"
+                                width="1000"></canvas>
+                </div>-->
             </div>
             <hr>
 
 
-            <div ng-controller="animalsController" class="row small-up-2 medium-up-3 large-up-4">
+            <!--<div ng-controller="animalsController" class="row small-up-2 medium-up-3 large-up-4" style="border-left: 1px solid black; border-right: 1px solid black;">
                 <div class="column" ng-repeat="an in animals()">
                     <h5>// an.name //</h5>
                     <img class="thumbnail img-gallery" src="// an.url_img //" ng-click="selectAnimal(an)">
                 </div>
+            </div>-->
             </div>
-
 
         </div>
     </div>
@@ -72,7 +72,16 @@
 
 <script src="/javascripts/angular/pandoraApp.js"></script>
 <!--Local script-->
-<script src="/javascripts/motor/Drawer.js"></script>
+<script src="javascripts/phaser/build/phaser.min.js"></script>
+<script src="javascripts/phaser/phaser-plugin-isometric/dist/phaser-plugin-isometric.min.js"></script>
+
+<script src="javascripts/game/GameCreate.js"></script>
+<script src="javascripts/game/GameLoader.js"></script>
+<script src="javascripts/game/GameRender.js"></script>
+<script src="javascripts/game/GameUpdate.js"></script>
+<script src="javascripts/game/Render.js"></script>
+
+<!--<script src="/javascripts/motor/Drawer.js"></script>
 <script src="/javascripts/motor/Canvas.js"></script>
 <script src="/javascripts/motor/CanvasTile.js"></script>
 <script src="/javascripts/motor/CanvasRoad.js"></script>
@@ -84,7 +93,7 @@
 <script src="/javascripts/motor/Road.js"></script>
 <script src="/javascripts/motor/Fence.js"></script>
 <script src="/javascripts/motor/Animal.js"></script>
-<script src="/javascripts/motor/Map.js"></script>
+<script src="/javascripts/motor/Map.js"></script>-->
 <!--Index-->
 <script src="/javascripts/index.js"></script>
 
