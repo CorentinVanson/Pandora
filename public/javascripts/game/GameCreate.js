@@ -309,7 +309,7 @@ var GameCreate = function(game){
             animal_window.add(g);
             var style = { font: "15px Arial", fill: "#ffffff", wordWrap:true, wordWrapWidth:400};
             var title4 = game.add.text(350,25,animal.description, style);
-            while(title4.height >= 400){
+            while(title4.height >= 350){
                 title4.fontSize -= 1;
             }
             //title4.height = 200;
