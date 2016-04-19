@@ -1,3 +1,4 @@
 /.idea
+/public/javascripts/phaser
 /node_modules
 /database
